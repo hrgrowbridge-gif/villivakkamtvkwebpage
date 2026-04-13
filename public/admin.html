@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin | TVK Issue Dashboard</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      body { background: #100000; }
+      .admin-shell { max-width: 1080px; margin: 40px auto; padding: 0 16px; }
+      .admin-card { padding: 32px; margin-bottom: 28px; }
+      .admin-card h2 { margin-top: 0; }
+      .admin-form { display: grid; gap: 18px; }
+      .admin-form label { display: grid; gap: 10px; }
+      .admin-form input { width: 100%; padding: 16px; border-radius: 18px; border: 1px solid rgba(255,255,255,0.16); background: rgba(255,255,255,0.08); color: #fff; }
+      .admin-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+      .admin-table { width: 100%; border-collapse: collapse; margin-top: 22px; }
+      .admin-table th, .admin-table td { padding: 14px 12px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.12); }
+      .admin-table th { color: #ffd64d; }
+      .status-toggle { display: inline-flex; align-items: center; gap: 8px; }
+      .status-toggle input { width: 16px; height: 16px; }
+      .admin-message { margin-top: 16px; color: #ffd64d; }
+      .hidden { display: none; }
+      .topbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 28px; }
+    </style>
+  </head>
+  <body>
+    <div class="admin-shell glass-card admin-card">
+      <div class="topbar">
+        <div>
+          <span style="color:#ffd64d;text-transform:uppercase;letter-spacing:0.25em;font-weight:800;font-size:0.85rem;">Admin Dashboard</span>
+          <h2>TVK Issue Reports</h2>
+        </div>
+        <button id="logoutBtn" class="btn primary hidden">Logout</button>
+      </div>
+      <div id="loginSection">
+        <p>Secure access to village issue submissions. Use admin login credentials configured in Render.</p>
+        <form id="adminLogin" class="admin-form">
+          <label>
+            Username
+            <input type="text" name="username" required />
+          </label>
+          <label>
+            Password
+            <input type="password" name="password" required />
+          </label>
+          <div class="admin-actions">
+            <button type="submit" class="btn primary">Login</button>
+            <div id="adminMessage" class="admin-message"></div>
+          </div>
+        </form>
+      </div>
+      <div id="entriesSection" class="hidden">
+        <p>Authenticated admin access. All issue reports are stored securely and only visible here.</p>
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Submitted At</th>
+              <th>Name</th>
+              <th>Area / Ward</th>
+              <th>Phone</th>
+              <th>Email</th>
+              <th>Issue Type</th>
+              <th>Issue</th>
+              <th>Attachment</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="entriesBody"></tbody>
+        </table>
+      </div>
+    </div>
+    <script src="admin.js"></script>
+  </body>
+</html>
